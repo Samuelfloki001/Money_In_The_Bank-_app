@@ -9,3 +9,4 @@ h1,h2,h3 { margin:14px 0; }
 .primary { background:var(--white); color:var(--accent); border:none; padding:12px 22px; border-radius:10px; font-weight:700; cursor:pointer; }
 .ghost { background:transparent; border:1px solid rgba(255,255,255,0.35); color:var(--white); padding:8px 14px; border-radius:8px; cursor:pointer; }
 input { padding:10px 12px; border-radius:8px; border:none; width:220px; margin-top:10px; text-align:center; }
+#loading { font-size:18px; font-weight:600; }
