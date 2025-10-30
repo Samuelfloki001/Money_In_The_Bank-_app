@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Money In The Bank</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="splash" class="screen">
+    <img src="images/splash.png" />
+    <h1>💰 Money In The Bank</h1>
+  </div>
+
+  <div id="auth" class="screen hidden">
+    <h2>Sign in with Google</h2>
+    <button id="googleBtn" class="primary">Sign in with Google</button>
+    <div id="loading" class="hidden">🔍 Verifying account...</div>
+    <div id="usernameSection" class="hidden">
+      <h3>Create a username</h3>
+      <input id="usernameInput" placeholder="Choose a username" />
+      <button id="saveUsername" class="primary">Continue</button>
+    </div>
+  </div>
+
+  <div id="home" class="screen hidden">
+    <header>
+      <h1>🏦 Dashboard</h1>
+      <div id="userInfo"></div>
+      <button id="signOutBtn" class="ghost">Sign out</button>
+    </header>
+    <main>
+      <p id="welcomeMsg"></p>
+    </main>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
