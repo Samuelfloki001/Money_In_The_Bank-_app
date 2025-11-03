@@ -12,3 +12,17 @@
     at process.processTimers (node:internal/timers:519:7)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2025-11-03T10:11:57.771Z] ----------------------------------------------------------------------
+[debug] [2025-11-03T10:11:57.777Z] Command:       C:\Users\Admin\3D Objects\node-v20.19.5-win-x64\node.exe C:\Users\Admin\3D Objects\node-v20.19.5-win-x64\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --project money-in-the-bank-app
+[debug] [2025-11-03T10:11:57.777Z] CLI Version:   14.23.0
+[debug] [2025-11-03T10:11:57.778Z] Platform:      win32
+[debug] [2025-11-03T10:11:57.778Z] Node Version:  v20.19.5
+[debug] [2025-11-03T10:11:57.778Z] Time:          Mon Nov 03 2025 02:11:57 GMT-0800 (Pacific Standard Time)
+[debug] [2025-11-03T10:11:57.779Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-03T10:12:02.896Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\Admin\3D Objects\node-v20.19.5-win-x64\node_modules\firebase-tools\lib\utils.js:275:49)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+[error] 
+[error] Error: An unexpected error has occurred.
