@@ -1,52 +1,50 @@
-﻿import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+﻿import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
+// --- Firebase configuration for Money In The Bank ---
 const firebaseConfig = {
-  apiKey: "AIzaSyC6V2kgHU58J1gcWGSmqxrsly29F56HzDA",
-  authDomain: "money-in-the-bank-app.firebaseapp.com",
-  projectId: "money-in-the-bank-app",
-  storageBucket: "money-in-the-bank-app.firebasestorage.app",
-  messagingSenderId: "690852849677",
-  appId: "1:690852849677:web:7bd6a3d3f70ee03dbb4d44",
-  measurementId: "G-W8P5268HS4"
+  apiKey: "AIzaSyDi2_nhoZ0WY0Jwv4BkD9HL6_ZOS8bG0so",
+  authDomain: "money-in-the-bank-f0c53.firebaseapp.com",
+  projectId: "money-in-the-bank-f0c53",
+  storageBucket: "money-in-the-bank-f0c53.appspot.com",
+  messagingSenderId: "429059379127",
+  appId: "1:429059379127:web:defaultAppId"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-const googleLogin = document.getElementById("googleLogin");
-const userBox = document.getElementById("userBox");
-const usernameInput = document.getElementById("usernameInput");
-const okBtn = document.getElementById("okBtn");
+// --- Elements ---
+const googleLoginBtn = document.getElementById('googleLogin');
+const userBox = document.getElementById('userBox');
+const okBtn = document.getElementById('okBtn');
+const usernameInput = document.getElementById('usernameInput');
 
-googleLogin.addEventListener("click", async () => {
-  try {
-    alert("Starting Google login...");
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    alert(Signed in as ${user.displayName});
-    googleLogin.style.display = "none";
-    userBox.style.display = "block";
-  } catch (err) {
-    alert("Login failed: " + err.message);
-  }
+// --- Google Login ---
+googleLoginBtn.addEventListener('click', () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      console.log("✅ Logged in as:", user.email);
+      googleLoginBtn.style.display = "none";
+      userBox.style.display = "block";
+    })
+    .catch((error) => {
+      console.error("❌ Login error:", error.message);
+      alert("Login failed. Try again.");
+    });
 });
 
-okBtn.addEventListener("click", async () => {
+// --- Username Entry + Redirect ---
+okBtn.addEventListener('click', () => {
   const username = usernameInput.value.trim();
-  if (!username) return alert("Please enter a username");
-
-  const userRef = doc(db, "users", username);
-  const existing = await getDoc(userRef);
-
-  if (existing.exists()) {
-    alert("Username already taken!");
-  } else {
-    await setDoc(userRef, { username });
-    alert(Welcome ${username}!);
-    window.location.href = "../pages/home.html";
+  if (!username) {
+    alert("Please enter a username.");
+    return;
   }
+
+  localStorage.setItem("username", username);
+  window.location.href = "homepage.html";
 });
