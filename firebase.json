@@ -2,6 +2,6 @@
   ""hosting"": {
     ""public"": ""public"",
     ""ignore"": [""firebase.json"",".gitignore"",""node_modules""],
-    ""rewrites"": [{ ""source"": ""**"", ""destination"": ""/index.html"" }]
+    ""rewrites"": [{ ""source"": """", ""destination"": ""/index.html"" }]
   }
 }
