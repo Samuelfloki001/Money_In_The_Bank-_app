@@ -1,3 +1,6 @@
-﻿setTimeout(() => {
-  window.location.href = "pages/login.html";
-}, 3000);
+﻿//// js/splash.js
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    window.location.href = 'login.html';
+  }, 3000);
+});

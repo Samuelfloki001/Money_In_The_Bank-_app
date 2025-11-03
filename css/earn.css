@@ -1,0 +1,15 @@
+﻿/* css/earn.css */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+#adContainer {
+  background: #222;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px auto;
+  padding: 40px;
+}

@@ -1,64 +1,44 @@
-﻿import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut as fbSignOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+﻿//// js/login.js
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDi2_nhoZ0WY0Jwv4BkD9HL6_ZOS8bG0so',
-  authDomain: 'money-in-the-bank-f0c53.firebaseapp.com',
-  projectId: 'money-in-the-bank-f0c53',
-  storageBucket: 'money-in-the-bank-f0c53.appspot.com',
-  messagingSenderId: '429059379127',
-  appId: '1:429059379127:web:defaultAppId'
+  apiKey: 'AIzaSyAdF68GHvwBMWlz_CpvJC3skKVpKx1sYMI',
+  authDomain: 'money-in-the-bank-app.firebaseapp.com',
+  projectId: 'money-in-the-bank-app',
+  storageBucket: 'money-in-the-bank-app.appspot.com',
+  messagingSenderId: '690852849677',
+  appId: '1:690852849677:web:defaultAppId'
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-const googleBtn = document.getElementById('googleLoginBtn');
-const btnText = document.getElementById('btnText') || null;
-const status = document.getElementById('status');
+const googleLoginBtn = document.getElementById('googleLogin');
 const userBox = document.getElementById('userBox');
-const usernameInput = document.getElementById('username');
-const saveBtn = document.getElementById('saveBtn');
+const okBtn = document.getElementById('okBtn');
+const usernameInput = document.getElementById('usernameInput');
 
-function setStatus(t){ if(status) status.textContent = t; }
-
-googleBtn.addEventListener('click', async () => {
-  googleBtn.disabled = true;
-  if(btnText) btnText.textContent = 'Opening Google…';
-  setStatus('Opening Google sign-in popup...');
-  try{
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    console.log('Signed in:', user.email);
-    setStatus('Signed in: ' + (user.email || 'unknown'));
-    userBox.style.display = 'flex';
-    usernameInput.value = user.displayName || localStorage.getItem('username') || '';
-    if(btnText) btnText.textContent = 'Continue with Google';
-    googleBtn.style.display = 'none';
-  }catch(err){
-    console.error('Sign-in failed', err);
-    alert('Sign-in failed: ' + (err.message || err));
-    setStatus('Sign-in failed. Try again.');
-    googleBtn.disabled = false;
-    if(btnText) btnText.textContent = 'Continue with Google';
-  }
+googleLoginBtn.addEventListener('click', () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      googleLoginBtn.style.display = 'none';
+      userBox.style.display = 'block';
+    })
+    .catch((error) => {
+      alert('Login failed. Try again.');
+      console.error(error);
+    });
 });
 
-saveBtn.addEventListener('click', async () => {
-  const val = (usernameInput.value || '').trim();
-  if(!val){ alert('Enter a username'); return; }
-  localStorage.setItem('username', val);
-  localStorage.setItem('displayName', val);
+okBtn.addEventListener('click', () => {
+  const username = usernameInput.value.trim();
+  if (!username) {
+    alert('Please enter a username.');
+    return;
+  }
+  localStorage.setItem('username', username);
   window.location.href = 'homepage.html';
 });
-
-window.firebaseSignOut = async function(){
-  try{
-    await fbSignOut(auth);
-    localStorage.removeItem('username');
-    localStorage.removeItem('displayName');
-  }catch(e){
-    console.warn('SignOut failed', e);
-  }
-};

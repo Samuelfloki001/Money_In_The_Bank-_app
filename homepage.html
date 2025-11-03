@@ -1,51 +1,18 @@
-﻿<!doctype html>
-<html lang="en">
+﻿<!-- homepage.html -->
+<!DOCTYPE html>
+<html lang='en'>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Home — Money In The Bank</title>
-<style>
-  :root{--bg:#0b1220;--accent:#ffd700}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Roboto,Segoe UI;background:linear-gradient(180deg,#071226,#07172b);color:#fff;min-height:100vh;display:flex;flex-direction:column}
-  header{padding:14px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between}
-  .brand{font-weight:700;color:var(--accent)}
-  main{flex:1;display:flex;align-items:center;justify-content:center;padding:20px}
-  .card{max-width:780px;width:100%;background:rgba(255,255,255,0.02);padding:22px;border-radius:12px;text-align:center}
-  h2{margin:0 0 12px}
-  p{color:#c7d2da}
-  .actions{display:flex;gap:12px;justify-content:center;margin-top:18px}
-  .btn{background:var(--accent);border:none;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer}
-  .small{font-size:.9rem;color:#9fb0c3;margin-top:10px}
-</style>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Home - Money In The Bank</title>
+<link rel='stylesheet' href='css/homepage.css'>
 </head>
 <body>
-  <header>
-    <div class="brand">Money In The Bank</div>
-    <div id="signOut" style="cursor:pointer;color:#9fb0c3">Sign out</div>
-  </header>
-
-  <main>
-    <div class="card">
-      <h2>Welcome, <span id="displayName">User</span>!</h2>
-      <p>Watch ads to earn rewards. Rewards are granted after each rewarded ad completes.</p>
-
-      <div class="actions">
-        <button id="earnBtn" class="btn">Start Earning</button>
-      </div>
-
-      <div class="small">Balance and payout features will be enabled after server-side integration.</div>
-    </div>
-  </main>
-
-<script>
-  const name = localStorage.getItem('username') || localStorage.getItem('displayName') || 'User';
-  document.getElementById('displayName').textContent = name;
-  document.getElementById('earnBtn').addEventListener('click', ()=> location.href='earn.html');
-  document.getElementById('signOut').addEventListener('click', ()=>{
-    localStorage.removeItem('username');
-    if(window.firebaseSignOut) window.firebaseSignOut();
-    location.href='login.html';
-  });
-</script>
+  <div class='container'>
+    <h1>Welcome, <span id='usernameDisplay'></span>!</h1>
+    <p>Start earning by watching ads.</p>
+    <button id='earnBtn'>Earn Now</button>
+  </div>
+  <script type='module' src='js/homepage.js'></script>
 </body>
 </html>
