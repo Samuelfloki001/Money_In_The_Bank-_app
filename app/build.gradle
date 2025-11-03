@@ -1,21 +1,39 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
 
 android {
-    namespace 'com.samuelfloki.moneyinthebank'
+    namespace 'com.example.moneyinthebank'
     compileSdk 34
 
     defaultConfig {
-        applicationId 'com.samuelfloki.moneyinthebank'
+        applicationId 'com.example.moneyinthebank'
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName '1.0'
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions { jvmTarget = '17' }
+
+    signingConfigs {
+        release {
+            keyAlias 'my-key-alias'
+            keyPassword 'Password123!'
+            storeFile file('C:/Users/Admin/OneDrive/Documents/Money_In_The_Bank-app/my-release-key.jks')
+            storePassword 'Password123!'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -24,14 +42,5 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-}
-android {
-    buildTypes {
-        release {
-            minifyEnabled false
-            shrinkResources false
-            signingConfig null
-        }
-    }
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
 }

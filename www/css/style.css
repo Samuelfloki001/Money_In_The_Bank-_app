@@ -1,0 +1,8 @@
+﻿:root { --bg:#003d00; --accent:#00b26a; --white:#fff; }
+body,html { margin:0; height:100%; font-family:Arial,Helvetica,sans-serif; }
+.screen { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh;
+  background:linear-gradient(135deg,var(--bg),var(--accent)); color:var(--white); text-align:center; }
+.hidden { display:none; }
+.googleBtn { padding:12px 20px; border:none; border-radius:8px; background:var(--white); color:var(--bg);
+  font-weight:600; cursor:pointer; }
+img { max-width:70%; border-radius:12px; box-shadow:0 4px 14px rgba(0,0,0,0.4); margin-bottom:12px; }
