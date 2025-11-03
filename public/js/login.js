@@ -2,17 +2,15 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
-// -------------------------
 // Firebase config
-// -------------------------
 const firebaseConfig = {
-  apiKey: 'AIzaSyAdF68GHvwBMWlz_CpvJC3skKVpKx1sYMI',
-  authDomain: 'money-in-the-bank-app.firebaseapp.com',
-  projectId: 'money-in-the-bank-app',
-  storageBucket: 'money-in-the-bank-app.appspot.com',
-  messagingSenderId: '690852849677',
-  appId: '1:690852849677:web:7bd6a3d3f70ee03dbb4d44',
-  measurementId: 'G-W8P5268HS4'
+    apiKey: 'AIzaSyAdF68GHvwBMWlz_CpvJC3skKVpKx1sYMI',
+    authDomain: 'money-in-the-bank-app.firebaseapp.com',
+    projectId: 'money-in-the-bank-app',
+    storageBucket: 'money-in-the-bank-app.appspot.com',
+    messagingSenderId: '690852849677',
+    appId: '1:690852849677:web:7bd6a3d3f70ee03dbb4d44',
+    measurementId: 'G-W8P5268HS4'
 };
 
 const app = initializeApp(firebaseConfig);
@@ -20,9 +18,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// -------------------------
-// DOM Elements
-// -------------------------
+// DOM elements
 const googleBtn = document.getElementById('googleBtn');
 const usernameBox = document.getElementById('usernameBox');
 const username = document.getElementById('username');
@@ -30,9 +26,7 @@ const saveBtn = document.getElementById('saveBtn');
 const msg = document.getElementById('msg');
 const progress = document.getElementById('loginProgress');
 
-// -------------------------
 // Google login
-// -------------------------
 googleBtn.onclick = async () => {
     try {
         progress.style.width = '20%';
@@ -48,15 +42,13 @@ googleBtn.onclick = async () => {
     }
 };
 
-// -------------------------
-// Save username & go to homepage
-// -------------------------
+// Save username
 saveBtn.onclick = async () => {
     const uname = username.value.trim().toLowerCase();
     if(!uname){ msg.textContent='Enter a username'; return; }
     const ref = doc(db,'users',uname);
     const snap = await getDoc(ref);
-    if(snap.exists()){ msg.textContent='Username taken'; return; }
+    if(snap.exists()){ msg.textContent='Username already taken'; return; }
     await setDoc(ref,{email:localStorage.getItem('email'),createdAt:new Date().toISOString()});
     localStorage.setItem('username', uname);
     progress.style.width = '100%';
