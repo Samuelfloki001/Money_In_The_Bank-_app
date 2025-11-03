@@ -16,15 +16,15 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-const googleBtn = document.getElementById('googleBtn');
-const usernameBox = document.getElementById('usernameBox');
-const username = document.getElementById('username');
+const googleBtn = document.getElementById('googleBtn');      
+const usernameBox = document.getElementById('usernameBox');  
+const username = document.getElementById('username');        
 const saveBtn = document.getElementById('saveBtn');
 const msg = document.getElementById('msg');
 
 googleBtn.onclick = async () => {
   try {
-    const res = await signInWithPopup(auth, provider);
+    const res = await signInWithPopup(auth, provider);       
     localStorage.setItem('email', res.user.email);
     googleBtn.classList.add('hidden');
     usernameBox.classList.remove('hidden');
@@ -34,7 +34,7 @@ googleBtn.onclick = async () => {
 
 saveBtn.onclick = async () => {
   const uname = username.value.trim().toLowerCase();
-  if(!uname){ msg.textContent='Enter a username'; return; }
+  if(!uname){ msg.textContent='Enter a username'; return; }  
   const ref = doc(db,'users',uname);
   const snap = await getDoc(ref);
   if(snap.exists()){ msg.textContent='Username taken'; return; }
