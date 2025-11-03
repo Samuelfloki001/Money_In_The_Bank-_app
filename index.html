@@ -1,25 +1,20 @@
-﻿<!DOCTYPE html>
-<html lang='en'>
-<head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Money In The Bank</title>
-<link rel='stylesheet' href='css/style.css'>
-</head>
-<body class='splash'>
-<div class='splash-card'>
-  <h1>Money In The Bank</h1>
-  <p class='muted'>Loading...</p>
-  <div class='progress-wrap'><div id='progress' class='progress'></div></div>
-</div>
-<script>
-const p = document.getElementById('progress');
-let v = 0;
-const t = setInterval(()=>{
-  v += Math.floor(Math.random()*20)+5;
-  if(v>=100){v=100; clearInterval(t); setTimeout(()=>location.href='login.html',500);}
-  p.style.width = v+'%';
-},200);
-</script>
-</body>
-</html>
+﻿<!DOCTYPE html> 
+<html lang='en'> 
+<head> 
+<meta charset='UTF-8'> 
+<meta name='viewport' content='width=device-width, initial-scale=1.0'> 
+<title>Money In The Bank</title> 
+<link rel='stylesheet' href='style.css'> 
+</head> 
+<body> 
+<h1>Welcome to Money In The Bank</h1> 
+<button id='googleBtn'>Login with Google</button> 
+<div id='usernameBox' class='hidden'> 
+<input type='text' id='username' placeholder='Enter username'> 
+<button id='saveBtn'>Save</button> 
+</div> 
+<div id='loginProgress' class='progress'></div> 
+<div id='msg'></div> 
+<script src='login.js' type='module'></script> 
+</body> 
+</html> 
