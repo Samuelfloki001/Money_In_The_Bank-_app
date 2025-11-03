@@ -1,8 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
-  const username = localStorage.getItem('username');
-  if (!username) return (window.location.href='login.html');
-  document.getElementById('usernameDisplay').textContent = username;
-  document.getElementById('earnBtn').addEventListener('click', () => {
-    window.location.href = 'earn.html';
-  });
-});
+﻿const uname = localStorage.getItem('username');
+if(!uname) location.href='login.html';
+document.getElementById('displayName').textContent = uname;
+document.getElementById('goEarn').onclick = () => location.href='earn.html';
+document.getElementById('logout').onclick = () => { localStorage.clear(); location.href='login.html'; };

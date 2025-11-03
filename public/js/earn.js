@@ -1,8 +1,13 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  const rewardMsg = document.getElementById('rewardMessage');
-  setTimeout(() => {
-    rewardMsg.textContent = '🎉 Reward granted! New ad will load shortly...';
-    setTimeout(() => location.reload(), 6000);
-  }, 8000);
+﻿document.addEventListener('DOMContentLoaded', ()=>{
+  try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+  const status = document.getElementById('status');
+  const toast = document.getElementById('toast');
+  const amt = document.getElementById('amt');
+  setTimeout(()=>{
+    const a = Math.floor(Math.random()*5)+1;
+    amt.textContent = a;
+    toast.classList.remove('hidden');
+    status.textContent = 'Rewarded +' + a + ' coins';
+    setTimeout(()=> toast.classList.add('hidden'), 2500);
+  }, 6000);
 });
