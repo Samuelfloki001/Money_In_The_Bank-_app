@@ -1,20 +1,25 @@
 const adStatus = document.getElementById('adStatus');
-const loadAdBtn = document.getElementById('loadAdBtn');
+const backBtn = document.getElementById('backBtn');
 
+// Simulate rewarded ad cycle
 function loadRewardAd() {
-    adStatus.innerText = 'Loading ad...';
-    
-    // Simulate AdMob rewarded ad
+    adStatus.innerText = 'Ad loading...';
+
     setTimeout(() => {
-        adStatus.innerText = 'Ad loaded! Reward granted!';
-        
-        // Automatically reload after 3 seconds
+        adStatus.innerText = 'Ad playing...';
+
         setTimeout(() => {
-            adStatus.innerText = '';
-            loadRewardAd();
-        }, 3000);
-        
-    }, 2000);
+            adStatus.innerText = 'Reward granted! Loading next ad...';
+            
+            setTimeout(loadRewardAd, 2000);
+        }, 5000); // Ad duration 5 sec
+    }, 2000); // Load delay 2 sec
 }
 
-loadAdBtn.addEventListener('click', loadRewardAd);
+// Start ad loop automatically
+loadRewardAd();
+
+// Back button
+backBtn.addEventListener('click', () => {
+    window.location.href = 'homepage.html';
+});
