@@ -1,7 +1,13 @@
 ﻿{
   "hosting": {
+    "site": "money-in-the-bank-app",
     "public": "public",
     "ignore": ["firebase.json", ".gitignore", "node_modules"],
-    "rewrites": [{"source": "", "destination": "/index.html"}]
+    "rewrites": [
+      {
+        "source": "",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
