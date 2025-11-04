@@ -37,25 +37,31 @@ googleBtn.onclick=async()=>{
   try{
     progress.style.width='20%';
     const res=await signInWithPopup(auth,provider);
+    console.log('Google login success:', res.user.email);
     localStorage.setItem('email',res.user.email);
     googleBtn.classList.add('hidden');
     usernameBox.classList.remove('hidden');
     progress.style.width='50%';
     msg.textContent='Choose a username';
   }catch(e){
-    console.error(e);
+    console.error('Google login failed:', e);
     msg.textContent='Login failed';
   }
 };
 
 saveBtn.onclick=async()=>{
-  const uname=username.value.trim().toLowerCase();
-  if(!uname){ msg.textContent='Enter a username'; return; }
-  const ref=doc(db,'users',uname);
-  const snap=await getDoc(ref);
-  if(snap.exists()){ msg.textContent='Username already taken'; return; }
-  await setDoc(ref,{email:localStorage.getItem('email'),createdAt:new Date().toISOString()});
-  localStorage.setItem('username',uname);
-  progress.style.width='100%';
-  setTimeout(()=> location.href='homepage.html',500);
+  try {
+    const uname=username.value.trim().toLowerCase();
+    if(!uname){ msg.textContent='Enter a username'; return; }
+    const ref=doc(db,'users',uname);
+    const snap=await getDoc(ref);
+    if(snap.exists()){ msg.textContent='Username already taken'; return; }
+    await setDoc(ref,{email:localStorage.getItem('email'),createdAt:new Date().toISOString()});
+    localStorage.setItem('username',uname);
+    progress.style.width='100%';
+    setTimeout(()=> location.href='homepage.html',500);
+  } catch(e) {
+    console.error('Error saving username:', e);
+    msg.textContent='Failed to save username';
+  }
 };
