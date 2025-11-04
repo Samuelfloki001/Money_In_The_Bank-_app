@@ -1,13 +1,19 @@
-﻿function loadAd() {
-  const adBox = document.getElementById('adBox');
-  const rewardMsg = document.getElementById('rewardMsg');
-  adBox.textContent = 'Ad Playing...';
-  rewardMsg.textContent = '';
+﻿const splash=document.getElementById('splashEarn');
+const container=document.querySelector('.earn-container');
+const rewardMsg=document.getElementById('rewardMsg');
+
+function loadAd(){
+  rewardMsg.textContent='Ad loading...';
   setTimeout(()=>{
-    adBox.textContent = 'Ad Finished';
-    rewardMsg.textContent = '🎉 You earned 10 coins!';
-    setTimeout(loadAd, 2000); // reload ad automatically
-  }, 5000); // simulate 5s ad
+    rewardMsg.textContent='🎉 Reward granted! Reloading ad...';
+    setTimeout(loadAd,3000);
+  },2000);
 }
 
-document.addEventListener('DOMContentLoaded', loadAd);
+window.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    splash.classList.add('hidden');
+    container.classList.remove('hidden');
+    loadAd();
+  },2000);
+});
