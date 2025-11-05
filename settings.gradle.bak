@@ -1,7 +1,0 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
-rootProject.name = 'Money_In_The_Bank-app'

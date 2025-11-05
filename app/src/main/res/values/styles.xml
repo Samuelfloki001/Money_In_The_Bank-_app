@@ -1,6 +1,0 @@
-<resources>
-    <style name='Theme.AppCompat.Light.NoActionBar' parent='Theme.AppCompat.Light'/>
-    <style name='SplashTheme' parent='Theme.AppCompat.Light.NoActionBar'>
-        <item name='android:windowBackground'>@mipmap/splash_screen</item>
-    </style>
-</resources>
