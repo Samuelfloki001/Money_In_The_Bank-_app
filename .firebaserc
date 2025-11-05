@@ -1,0 +1,13 @@
+{
+  "projects": {},
+  "targets": {
+    "money-in-the-bank-app": {
+      "hosting": {
+        "money-in-the-bank-app": [
+          "money-in-the-bank-app"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

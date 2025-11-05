@@ -1,0 +1,44 @@
+﻿=========================================
+        MONEY IN THE BANK – STRUCTURE
+=========================================
+
+GitHub Repo:
+  https://github.com/Samuelfloki001/Money_In_The_Bank-_app.git
+
+Firebase Project:
+  ID: money-in-the-bank-app
+  Hosting Site: money-in-the-bank-app
+  Hosting URL: https://money-in-the-bank-app.web.app
+
+-----------------------------------------
+📂 Folder Tree
+-----------------------------------------
+C:\Projects\Money_In_The_Bank-app\
+│
+├── firebase.json
+├── .firebaserc
+├── public\
+│   ├── index.html        ← Splash + Login
+│   ├── homepage.html     ← Welcome Page
+│   ├── earn.html         ← Ad Page (pub-6394894143909202 / slot 5468312735)
+│   ├── css\
+│   │   └── style.css
+│   └── js\
+│       └── app.js
+│
+└── (Firebase deploys all files under /public)
+
+-----------------------------------------
+⚙ Flow Diagram
+-----------------------------------------
+Login → Homepage → Earn Page → Reward → Reload Ads
+   │
+   └── Uses Firebase Auth + Hosting
+       │
+       └── Connected to GitHub for version sync
+
+-----------------------------------------
+🚀 Hosting Link
+-----------------------------------------
+https://money-in-the-bank-app.web.app
+=========================================
