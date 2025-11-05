@@ -1,0 +1,3 @@
+﻿body{margin:0;font-family:Inter,Arial;background:linear-gradient(180deg,#fff7ee,#fff);color:#5a2a00;display:flex;justify-content:center;align-items:center;min-height:100vh;text-align:center}
+.mainCard{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+#adArea{margin-top:16px}
